@@ -5,8 +5,8 @@ public class User {
     private String password;
     private String name;
     private String surname;
-    private String street;
     private String premise;
+    private String street;
     private String postCode;
     private String city;
     private String country;
@@ -28,12 +28,12 @@ public class User {
         return surname;
     }
 
-    public String getStreet() {
-        return street;
-    }
-
     public String getPremise() {
         return premise;
+    }
+
+    public String getStreet() {
+        return street;
     }
 
     public String getPostCode() {
@@ -48,15 +48,15 @@ public class User {
         return country;
     }
 
-    public User(String login, String password, String name, String surname,
-                String street, String premise, String postCode, String city,
+    public User(String login, String password, String name, String surname, String premise,
+                String street, String postCode, String city,
                 String panstwo){
         this.login=login;
         this.password = password;
         this.name = name;
         this.surname = surname;
-        this.street = street;
         this.premise = premise;
+        this.street = street;
         this.postCode = postCode;
         this.city = city;
         this.country =panstwo;
