@@ -28,7 +28,7 @@ public class Service {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest postLoginRequest = new StringRequest(
-                Request.Method.POST, url, new Response.Listener<String>() {
+                Request.Method.POST, url+"/user/login", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(context, "Zalogowano", Toast.LENGTH_LONG).show();
@@ -62,7 +62,7 @@ public class Service {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest postRejestracjaRequest = new StringRequest(
-                Request.Method.POST, url, new Response.Listener<String>() {
+                Request.Method.POST, url+"/user", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(context, "Zarejestrowano", Toast.LENGTH_LONG).show();
