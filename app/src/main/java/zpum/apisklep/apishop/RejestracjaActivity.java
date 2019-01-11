@@ -11,14 +11,14 @@ import static zpum.apisklep.apishop.MainActivity.MYURL;
 public class RejestracjaActivity extends AppCompatActivity {
 
     EditText login;
-    EditText pass;
-    EditText imie;
-    EditText nazwisko;
-    EditText ulica;
-    EditText nrDom;
-    EditText kod;
-    EditText miasto;
-    EditText panstwo;
+    EditText password;
+    EditText name;
+    EditText surname;
+    EditText premise;
+    EditText street;
+    EditText postCode;
+    EditText city;
+    EditText country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +26,20 @@ public class RejestracjaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rejestracja);
 
         login = findViewById(R.id.editLogin1);
-        pass = findViewById(R.id.editPass1);
-        imie = findViewById(R.id.editImie);
-        nazwisko = findViewById(R.id.editNazwisko);
-        ulica = findViewById(R.id.editUlica);
-        nrDom = findViewById(R.id.editNrDom);
-        kod = findViewById(R.id.editKod);
-        miasto = findViewById(R.id.editMiasto);
-        panstwo = findViewById(R.id.editPanstwo);
+        password = findViewById(R.id.editPass1);
+        name = findViewById(R.id.editImie);
+        surname = findViewById(R.id.editNazwisko);
+        premise = findViewById(R.id.editNrDom);
+        street = findViewById(R.id.editUlica);
+        postCode = findViewById(R.id.editKod);
+        city = findViewById(R.id.editMiasto);
+        country = findViewById(R.id.editPanstwo);
     }
 
     public User GetData() {
-        User user = new User(login.toString(), pass.toString(), imie.toString(), nazwisko.toString(),
-                ulica.toString(), nrDom.toString(), kod.toString(),
-                miasto.toString(), panstwo.toString());
+        User user = new User(login.toString(), password.toString(), name.toString(), surname.toString(),
+                premise.toString(),street.toString(), postCode.toString(),
+                city.toString(), country.toString());
 
         return user;
     }

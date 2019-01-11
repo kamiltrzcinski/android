@@ -1,6 +1,5 @@
 package zpum.apisklep.apishop;
 
-import android.app.VoiceInteractor;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -23,7 +22,7 @@ public class Service {
         this.context = context;
     }
 
-    public void postLogin(final String logowanie) {
+    public String postLogin(final String logowanie) {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest postLoginRequest = new StringRequest(
@@ -38,22 +37,22 @@ public class Service {
                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-//        {
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//
-//            @Override
-//            public byte[] getBody() throws AuthFailureError {
-//                try {
-//                    return logowanie == null ? null :
-//                            logowanie.getBytes("utf-8");
-//                } catch (UnsupportedEncodingException uee) {
-//                    return null;
-//                }
-//            }
-//        };
+        {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return logowanie == null ? null :
+                            logowanie.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    return null;
+                }
+            }
+        };
         queue.add(postLoginRequest);
         queue.start();
     }
