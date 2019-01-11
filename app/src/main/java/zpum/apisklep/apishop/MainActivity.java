@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         String logowanieJson = Utils.parseToJson(logowanie);
         Service service = new Service(getApplicationContext());
-        service.postLogin(logowanieJson);
+        service.postLogin(login.getText().toString(), password.getText().toString());
 
         context = getApplicationContext();
         Intent menu = new Intent(this, MenuActivity.class);
