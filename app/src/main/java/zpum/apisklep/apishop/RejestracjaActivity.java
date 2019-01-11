@@ -37,9 +37,11 @@ public class RejestracjaActivity extends AppCompatActivity {
     }
 
     public User GetData() {
-        User user = new User(login.toString(), password.toString(), name.toString(), surname.toString(),
-                premise.toString(),street.toString(), postCode.toString(),
-                city.toString(), country.toString());
+        User user = new User(login.getText().toString(), password.getText().toString(),
+                name.getText().toString(), surname.getText().toString(),
+                premise.getText().toString(),street.getText().toString(),
+                postCode.getText().toString(), city.getText().toString(),
+                country.getText().toString());
 
         return user;
     }

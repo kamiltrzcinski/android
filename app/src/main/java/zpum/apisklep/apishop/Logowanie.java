@@ -4,6 +4,8 @@ public class Logowanie {
     private String login;
     private String password;
 
+    public Logowanie() {
+    }
 
     public String getLogin() {
         return login;

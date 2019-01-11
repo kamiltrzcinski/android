@@ -1,6 +1,7 @@
 package zpum.apisklep.apishop;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -12,6 +13,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static zpum.apisklep.apishop.MainActivity.MYURL;
 
@@ -30,6 +33,7 @@ public class Service {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+                Log.d("", response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -37,7 +41,15 @@ public class Service {
                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
-        ) {
+        )
+       {
+           @Override
+
+           public Map<String, String> getHeaders() throws AuthFailureError {
+               Map<String, String> params = new HashMap<String, String>();
+               params.put("Content-Type", "application/json");
+               return params;
+           }
             @Override
             public String getBodyContentType() {
                 return "application/json; charset=utf-8";

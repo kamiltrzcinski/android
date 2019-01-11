@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Menu(View view) {
-        Logowanie logowanie = new Logowanie(login.toString(), password.toString());
-        final String url = MYURL+"/user/login";
+        Logowanie logowanie = new Logowanie(login.getText().toString(), password.getText().toString());
+//        final String url = MYURL+"/user/login";
 
         String logowanieJson = Utils.parseToJson(logowanie);
         Service service = new Service(getApplicationContext());
