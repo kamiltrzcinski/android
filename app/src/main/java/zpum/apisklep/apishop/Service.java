@@ -29,7 +29,7 @@ public class Service {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest postLoginRequest = new StringRequest(
-                Request.Method.POST, MYURL + "/user/login", new Response.Listener<String>() {
+                Request.Method.POST,  MYURL+"/user/login", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(context, response, Toast.LENGTH_LONG).show();
@@ -40,11 +40,9 @@ public class Service {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
-        }
-        )
+        })
        {
            @Override
-
            public Map<String, String> getHeaders() throws AuthFailureError {
                Map<String, String> params = new HashMap<String, String>();
                params.put("Content-Type", "application/json");
@@ -69,39 +67,46 @@ public class Service {
         queue.start();
     }
 
-
     public void postRejestracja(final String user) {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest postRejestracjaRequest = new StringRequest(
-                Request.Method.POST, MYURL+"/user", new Response.Listener<String>() {
+                Request.Method.POST,  MYURL+"/user", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(context, "Zarejestrowano", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+                Log.d("", response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
-        });
-//        {
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//
-//            @Override
-//            public byte[] getBody() throws AuthFailureError {
-//                try {
-//                    return user == null ? null :
-//                            user.getBytes("utf-8");
-//                } catch (UnsupportedEncodingException uee) {
-//                    return null;
-//                }
-//            }
-//        };
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json");
+                return params;
+            }
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return user == null ? null :
+                            user.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    return null;
+                }
+            }
+        };
         queue.add(postRejestracjaRequest);
         queue.start();
     }
+
 }
