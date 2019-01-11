@@ -22,22 +22,22 @@ public class Service {
         this.context = context;
     }
 
-    public String postLogin(final String logowanie) {
+    public void postLogin(final String logowanie) {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest postLoginRequest = new StringRequest(
-                Request.Method.POST, MYURL+"/user/login", new Response.Listener<String>() {
+                Request.Method.POST, MYURL + "/user/login", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(context, "Zalogowano", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, response, Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
             }
-        });
-        {
+        }
+        ) {
             @Override
             public String getBodyContentType() {
                 return "application/json; charset=utf-8";
@@ -56,6 +56,7 @@ public class Service {
         queue.add(postLoginRequest);
         queue.start();
     }
+
 
     public void postRejestracja(final String user) {
         RequestQueue queue = Volley.newRequestQueue(context);
