@@ -53,7 +53,10 @@ public class RejestracjaActivity extends AppCompatActivity {
 
         String userJson = Utils.parseToJson(user);
         Service service = new Service(getApplicationContext());
-        service.postRejestracja(userJson);
+        service.postRejestracja(login.getText().toString(), password.getText().toString(),
+                name.getText().toString(), surname.getText().toString(), premise.getText().toString(),
+                street.getText().toString(), postCode.getText().toString(), city.getText().toString(),
+                country.getText().toString());
 
         Intent menu = new Intent(this, MenuActivity.class);
         startActivity(menu);
