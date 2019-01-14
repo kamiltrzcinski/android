@@ -176,7 +176,8 @@ public class Service {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                return params.put("Authorization", Utils.getMyToken());
+                params.put("Authorization", Utils.getMyToken());
+                return params;
             }
 
             @Override
