@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         Intent menu = new Intent(getBaseContext(), MenuActivity.class);
-        menu.putExtra("accessToken", accessToken);
         startActivity(menu);
     }
 }

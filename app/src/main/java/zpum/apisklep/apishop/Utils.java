@@ -12,5 +12,9 @@ public class Utils {
     }
 
     public static String parseToJson(Logowanie logowanie) { return  new Gson().toJson(logowanie);}
+
+    public static ApiToken parseFromJson(String apiToken){
+        return new Gson().fromJson(apiToken, ApiToken.class);
+    }
 }
 

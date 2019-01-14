@@ -36,8 +36,6 @@ public class Service {
         this.context = context;
     }
 
-
-
     public void postLogin(final String login, final String password) {
 
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -54,7 +52,8 @@ public class Service {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        setAccessToken(response.toString());
+                        ApiToken apiToken = Utils.parseFromJson(response.toString());
+                        ActiveToken.getInstance().setApiToken(apiToken);
                         Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
                         Log.d("", response.toString());
 

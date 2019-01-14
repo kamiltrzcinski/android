@@ -20,7 +20,7 @@ public class MenuActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             String value = extras.getString("accessToken");
-            textView.setText(value+"bla");
+            textView.setText(ActiveToken.getInstance().getApiToken().getAccessToken());
         }
     }
 

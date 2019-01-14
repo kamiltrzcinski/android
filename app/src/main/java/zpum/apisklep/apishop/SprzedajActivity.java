@@ -32,23 +32,23 @@ public class SprzedajActivity extends AppCompatActivity {
 
     }
 
-    public Product GetData() {
-        String user = ActiveUser.getInstance().getUser().getLogin();
-        Product product = new Product(editNazwa.toString(), editCena.toString(), editOpis.toString(), user);
-        return product;
-    }
-
-    public void SendData(View view) {
-        final String url = MYURL + "/";
-        Product product = GetData();
-    }
-
-    public void Wyswietl(View view) {
-        Intent wyswietl = new Intent(this, WyswietlActivity.class);
-        startActivity(wyswietl);
-    }
-
-    @OnClick(R.id.buttonSprzedaj)
-    public void onViewClicked() {
-    }
+//    public Product GetData() {
+//        String user = ActiveToken.getInstance().getUser().getLogin();
+//        Product product = new Product(editNazwa.toString(), editCena.toString(), editOpis.toString(), user);
+//        return product;
+//    }
+//
+//    public void SendData(View view) {
+//        final String url = MYURL + "/";
+//        Product product = GetData();
+//    }
+//
+//    public void Wyswietl(View view) {
+//        Intent wyswietl = new Intent(this, WyswietlActivity.class);
+//        startActivity(wyswietl);
+//    }
+//
+//    @OnClick(R.id.buttonSprzedaj)
+//    public void onViewClicked() {
+//    }
 }
