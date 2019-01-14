@@ -16,5 +16,9 @@ public class Utils {
     public static ApiToken parseFromJson(String apiToken){
         return new Gson().fromJson(apiToken, ApiToken.class);
     }
+
+    public static String getMyToken(){
+        return ActiveToken.getInstance().getApiToken().getAccessToken();
+    }
 }
 

@@ -2,7 +2,6 @@ package zpum.apisklep.apishop;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -17,6 +16,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.String;
 
 import static zpum.apisklep.apishop.MainActivity.MYURL;
 
@@ -138,6 +138,63 @@ public class Service {
         queue.add(postRequest);
         queue.start();
     }
+
+    public void putOffer(final String name, final String sellerName, final String description, final Double price) {
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        Map<String, String> jsonParams = new HashMap<String, String>();
+        jsonParams.put("name", name);
+        jsonParams.put("sellerName", sellerName);
+        jsonParams.put("description", description);
+        jsonParams.put("price", price.toString());
+
+
+        Log.d("", "Json:" + new JSONObject(jsonParams));
+
+        JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.PUT, MYURL + "/offer", new JSONObject(jsonParams),
+
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(context,response.toString(), Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.d("", "Error: " + error
+//                        + "\nStatus Code " + error.networkResponse.statusCode
+//                        + "\nResponse Data " + error.networkResponse.data
+                                + "\nCause " + error.getCause()
+                                + "\nmessage" + error.getMessage());
+                    }
+                }
+
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                return params.put("Authorization", Utils.getMyToken());
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+        };
+
+        queue.add(putRequest);
+        queue.start();
+    }
+
+
+//    @Override
+//    public Map<String, String> getHeaders() throws AuthFailureError {
+//        Map<String, String> params = new HashMap<String, String>();
+//        return params.put( , Utils.getMyToken());
+//    }
 
 //    public void postLogin(final String logowanie) {
 //        RequestQueue queue = Volley.newRequestQueue(context);

@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MenuActivity extends AppCompatActivity {
 
     TextView textView;
+    String value = ActiveToken.getInstance().getApiToken().getAccessToken();
 
 
     @Override
@@ -17,9 +18,8 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         textView = (TextView)findViewById(R.id.textView);
-        String value = ActiveToken.getInstance().getApiToken().getAccessToken();
-        textView.setText(value);
 
+        textView.setText(value);
     }
 
 

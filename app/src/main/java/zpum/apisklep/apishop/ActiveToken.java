@@ -1,7 +1,7 @@
 package zpum.apisklep.apishop;
 
 public class ActiveToken {
-    private ApiToken apiToken;
+    private ApiToken apiToken = new ApiToken();
 
     private static final ActiveToken ourInstance = new ActiveToken();
 
