@@ -17,11 +17,9 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         textView = (TextView)findViewById(R.id.textView);
-        Bundle extras = getIntent().getExtras();
-        if (extras != null){
-            String value = extras.getString("accessToken");
-            textView.setText(ActiveToken.getInstance().getApiToken().getAccessToken());
-        }
+        String value = ActiveToken.getInstance().getApiToken().getAccessToken();
+        textView.setText(value);
+
     }
 
 
