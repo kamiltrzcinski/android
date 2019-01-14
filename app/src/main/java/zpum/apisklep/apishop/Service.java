@@ -36,6 +36,8 @@ public class Service {
         this.context = context;
     }
 
+
+
     public void postLogin(final String login, final String password) {
 
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -69,6 +71,7 @@ public class Service {
                                 + "\nmessage" + error.getMessage());
                     }
                 }
+
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

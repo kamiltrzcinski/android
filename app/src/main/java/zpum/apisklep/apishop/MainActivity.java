@@ -7,20 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText login;
     EditText password;
     Context context;
     public static final String MYURL = "https://shopwsb.azurewebsites.net";
-    public String accessToken;
+    public String accessToken = "dupa";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ButterKnife.bind(this);
         login = findViewById(R.id.editLogin);
         password = findViewById(R.id.editPass);
 
