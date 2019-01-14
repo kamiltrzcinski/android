@@ -107,7 +107,7 @@ public class Service {
                 new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(context, "Witaj " + name, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
             }
         },
                 new Response.ErrorListener() {
