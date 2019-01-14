@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="login"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/editPass1"
@@ -89,8 +90,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="państwo"
-            android:inputType="textPersonName"
-            android:text="Polska" />
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/buttonZarejestruj"

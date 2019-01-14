@@ -1,6 +1,7 @@
 package zpum.apisklep.apishop;
 
 import android.content.Context;
+import android.media.session.MediaSession;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -24,6 +25,15 @@ import static zpum.apisklep.apishop.MainActivity.MYURL;
 
 public class Service {
     private final Context context;
+    private String myToken;
+
+    public String getMyToken() {
+        return myToken;
+    }
+
+    public void setMyToken(String myToken) {
+        this.myToken = myToken;
+    }
 
     public Service(Context context) {
         this.context = context;
@@ -78,6 +88,7 @@ public class Service {
         jsonParams.put("login", login);
         jsonParams.put("password", password);
 
+
         Log.d("", "Json:" + new JSONObject(jsonParams));
 
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, MYURL + "/user/login", new JSONObject(jsonParams),
@@ -88,6 +99,7 @@ public class Service {
                     public void onResponse(JSONObject response) {
                         Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
                         Log.d("", response.toString());
+                        setMyToken(response.toString());
                     }
                 },
                 new Response.ErrorListener() {
@@ -130,10 +142,13 @@ public class Service {
         jsonParams.put("premise", premise);
         jsonParams.put("street", street);
         jsonParams.put("postCode", postCode);
+        jsonParams.put("city", city);
+        jsonParams.put("country", country);
 
         Log.d("", "JSON: " + new JSONObject(jsonParams));
 
-        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, MYURL + "/user", new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
+        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, MYURL + "/user",
+                new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(context, "Witaj " + name, Toast.LENGTH_LONG).show();
@@ -165,7 +180,6 @@ public class Service {
         queue.add(postRequest);
         queue.start();
     }
-
 
 //    public void postRejestracja(final String user) {
 //        RequestQueue queue = Volley.newRequestQueue(context);
