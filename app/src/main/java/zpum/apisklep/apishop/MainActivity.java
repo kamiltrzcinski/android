@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     Context context;
     public static final String MYURL = "https://shopwsb.azurewebsites.net";
+    public String accessToken;
 
 
     @Override
@@ -38,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
         String logowanieJson = Utils.parseToJson(logowanie);
         Service service = new Service(getApplicationContext());
         service.postLogin(login.getText().toString(), password.getText().toString());
+        accessToken = service.getAccessToken();
 
         context = getApplicationContext();
-        Intent menu = new Intent(this, MenuActivity.class);
+        Intent menu = new Intent(getBaseContext(), MenuActivity.class);
+        menu.putExtra("accessToken", accessToken);
         startActivity(menu);
     }
 }

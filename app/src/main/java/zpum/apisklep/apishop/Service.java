@@ -1,8 +1,8 @@
 package zpum.apisklep.apishop;
 
 import android.content.Context;
-import android.media.session.MediaSession;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -11,75 +11,30 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 import static zpum.apisklep.apishop.MainActivity.MYURL;
 
 public class Service {
     private final Context context;
-    private String myToken;
+    private String accessToken;
 
-    public String getMyToken() {
-        return myToken;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setMyToken(String myToken) {
-        this.myToken = myToken;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public Service(Context context) {
         this.context = context;
     }
-
-//    public void postLogin(final String logowanie) {
-//        RequestQueue queue = Volley.newRequestQueue(context);
-//
-//        StringRequest postLoginRequest = new StringRequest(
-//                Request.Method.POST,  MYURL+"/user/login", new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Toast.makeText(context, response, Toast.LENGTH_LONG).show();
-//                Log.d("", response);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        })
-//       {
-//           @Override
-//           public Map<String, String> getHeaders() throws AuthFailureError {
-//               Map<String, String> params = new HashMap<String, String>();
-//               params.put("Content-Type", "application/json");
-//               return params;
-//           }
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//
-//            @Override
-//            public byte[] getBody() throws AuthFailureError {
-//                try {
-//                    return logowanie == null ? null :
-//                            logowanie.getBytes("utf-8");
-//                } catch (UnsupportedEncodingException uee) {
-//                    return null;
-//                }
-//            }
-//        };
-//        queue.add(postLoginRequest);
-//        queue.start();
-//    }
 
     public void postLogin(final String login, final String password) {
 
@@ -97,9 +52,10 @@ public class Service {
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        setAccessToken(response.toString());
                         Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
                         Log.d("", response.toString());
-                        setMyToken(response.toString());
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -180,6 +136,48 @@ public class Service {
         queue.add(postRequest);
         queue.start();
     }
+
+//    public void postLogin(final String logowanie) {
+//        RequestQueue queue = Volley.newRequestQueue(context);
+//
+//        StringRequest postLoginRequest = new StringRequest(
+//                Request.Method.POST,  MYURL+"/user/login", new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+//                Log.d("", response);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        })
+//       {
+//           @Override
+//           public Map<String, String> getHeaders() throws AuthFailureError {
+//               Map<String, String> params = new HashMap<String, String>();
+//               params.put("Content-Type", "application/json");
+//               return params;
+//           }
+//            @Override
+//            public String getBodyContentType() {
+//                return "application/json; charset=utf-8";
+//            }
+//
+//            @Override
+//            public byte[] getBody() throws AuthFailureError {
+//                try {
+//                    return logowanie == null ? null :
+//                            logowanie.getBytes("utf-8");
+//                } catch (UnsupportedEncodingException uee) {
+//                    return null;
+//                }
+//            }
+//        };
+//        queue.add(postLoginRequest);
+//        queue.start();
+//    }
 
 //    public void postRejestracja(final String user) {
 //        RequestQueue queue = Volley.newRequestQueue(context);

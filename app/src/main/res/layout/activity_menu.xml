@@ -7,6 +7,7 @@
     tools:context=".MenuActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="372dp"
         android:layout_height="97dp"
         android:layout_marginStart="8dp"
@@ -35,4 +36,17 @@
             android:onClick="Wyswietl"
             android:text="PRZEDMIOTY WYSTAWIONE" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="248dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="142dp"
+        android:layout_marginBottom="273dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
