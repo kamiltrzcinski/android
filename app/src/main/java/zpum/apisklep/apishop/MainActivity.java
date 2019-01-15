@@ -2,10 +2,12 @@ package zpum.apisklep.apishop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.ButterKnife;
 
@@ -35,16 +37,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Menu(View view) {
-        Logowanie logowanie = new Logowanie(login.getText().toString(), password.getText().toString());
-//        final String url = MYURL+"/user/login";
 
-        String logowanieJson = Utils.parseToJson(logowanie);
         Service service = new Service(getApplicationContext());
         service.postLogin(login.getText().toString(), password.getText().toString());
-        accessToken = service.getAccessToken();
 
         context = getApplicationContext();
         Intent menu = new Intent(this, MenuActivity.class);
         startActivity(menu);
     }
+
 }

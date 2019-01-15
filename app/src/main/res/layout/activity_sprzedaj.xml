@@ -6,47 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".SprzedajActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+    <EditText
+        android:id="@+id/productNameTE"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:ems="10"
+        android:hint="@string/product_name_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/sellerNameTE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
-        <EditText
-            android:id="@+id/editNazwa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="nazwa przedmiotu"
-            android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/sellerNameTE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="@string/seller_name_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionProductET"
+        app:layout_constraintEnd_toEndOf="@+id/productNameTE"
+        app:layout_constraintStart_toStartOf="@+id/productNameTE"
+        app:layout_constraintTop_toBottomOf="@+id/productNameTE" />
 
-        <EditText
-            android:id="@+id/editCena"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="cena przedmiotu"
-            android:inputType="text" />
+    <EditText
+        android:id="@+id/descriptionProductET"
+        android:layout_width="0dp"
+        android:layout_height="236dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="@string/description_product_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/priceET"
+        app:layout_constraintEnd_toEndOf="@+id/sellerNameTE"
+        app:layout_constraintStart_toStartOf="@+id/sellerNameTE"
+        app:layout_constraintTop_toBottomOf="@+id/sellerNameTE" />
 
-        <EditText
-            android:id="@+id/editOpis"
-            android:layout_width="match_parent"
-            android:layout_height="362dp"
-            android:ems="10"
-            android:hint="opis przedmiotu"
-            android:inputType="text" />
+    <EditText
+        android:id="@+id/priceET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="@string/price_hint"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/sellButton"
+        app:layout_constraintEnd_toEndOf="@+id/descriptionProductET"
+        app:layout_constraintStart_toStartOf="@+id/descriptionProductET"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionProductET" />
 
-        <Button
-            android:id="@+id/buttonSprzedaj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SPRZEDAJ" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/sellButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="18dp"
+        android:text="@string/sell_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/priceET"
+        app:layout_constraintStart_toStartOf="@+id/priceET"
+        app:layout_constraintTop_toBottomOf="@+id/priceET" />
 </android.support.constraint.ConstraintLayout>

@@ -22,15 +22,6 @@ import static zpum.apisklep.apishop.MainActivity.MYURL;
 
 public class Service {
     private final Context context;
-    private String accessToken;
-
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
 
     public Service(Context context) {
         this.context = context;
@@ -123,7 +114,7 @@ public class Service {
                                 + "\nmessage" + error.getMessage());
                     }
                 }
-        ){
+        ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
@@ -157,7 +148,7 @@ public class Service {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(context,response.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -189,96 +180,5 @@ public class Service {
         queue.add(putRequest);
         queue.start();
     }
-
-
-//    @Override
-//    public Map<String, String> getHeaders() throws AuthFailureError {
-//        Map<String, String> params = new HashMap<String, String>();
-//        return params.put( , Utils.getMyToken());
-//    }
-
-//    public void postLogin(final String logowanie) {
-//        RequestQueue queue = Volley.newRequestQueue(context);
-//
-//        StringRequest postLoginRequest = new StringRequest(
-//                Request.Method.POST,  MYURL+"/user/login", new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Toast.makeText(context, response, Toast.LENGTH_LONG).show();
-//                Log.d("", response);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        })
-//       {
-//           @Override
-//           public Map<String, String> getHeaders() throws AuthFailureError {
-//               Map<String, String> params = new HashMap<String, String>();
-//               params.put("Content-Type", "application/json");
-//               return params;
-//           }
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//
-//            @Override
-//            public byte[] getBody() throws AuthFailureError {
-//                try {
-//                    return logowanie == null ? null :
-//                            logowanie.getBytes("utf-8");
-//                } catch (UnsupportedEncodingException uee) {
-//                    return null;
-//                }
-//            }
-//        };
-//        queue.add(postLoginRequest);
-//        queue.start();
-//    }
-
-//    public void postRejestracja(final String user) {
-//        RequestQueue queue = Volley.newRequestQueue(context);
-//
-//        StringRequest postRejestracjaRequest = new StringRequest(
-//                Request.Method.POST, MYURL + "/user", new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Toast.makeText(context, response, Toast.LENGTH_LONG).show();
-//                Log.d("", response);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        }) {
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("Content-Type", "application/json");
-//                return params;
-//            }
-//
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//
-//            @Override
-//            public byte[] getBody() throws AuthFailureError {
-//                try {
-//                    return user == null ? null :
-//                            user.getBytes("utf-8");
-//                } catch (UnsupportedEncodingException uee) {
-//                    return null;
-//                }
-//            }
-//        };
-//        queue.add(postRejestracjaRequest);
-//        queue.start();
-//    }
 
 }
