@@ -36,5 +36,6 @@ public class WyswietlActivity extends AppCompatActivity {
         context = getApplicationContext();
         Intent menu = new Intent(this, MenuActivity.class);
         startActivity(menu);
+        this.recreate();
     }
 }

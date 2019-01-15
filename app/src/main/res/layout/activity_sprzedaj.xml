@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/sellerNameTE"
@@ -32,6 +32,7 @@
         android:ems="10"
         android:hint="@string/seller_name_hint"
         android:inputType="textPersonName"
+        tools:ignore="Autofill"
         app:layout_constraintBottom_toTopOf="@+id/descriptionProductET"
         app:layout_constraintEnd_toEndOf="@+id/productNameTE"
         app:layout_constraintStart_toStartOf="@+id/productNameTE"
@@ -46,6 +47,7 @@
         android:ems="10"
         android:hint="@string/description_product_hint"
         android:inputType="textPersonName"
+        tools:ignore="Autofill"
         app:layout_constraintBottom_toTopOf="@+id/priceET"
         app:layout_constraintEnd_toEndOf="@+id/sellerNameTE"
         app:layout_constraintStart_toStartOf="@+id/sellerNameTE"
@@ -61,6 +63,7 @@
         android:ems="10"
         android:hint="@string/price_hint"
         android:inputType="numberDecimal"
+        tools:ignore="Autofill"
         app:layout_constraintBottom_toTopOf="@+id/sellButton"
         app:layout_constraintEnd_toEndOf="@+id/descriptionProductET"
         app:layout_constraintStart_toStartOf="@+id/descriptionProductET"

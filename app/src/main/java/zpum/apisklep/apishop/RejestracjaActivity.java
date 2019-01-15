@@ -59,5 +59,6 @@ public class RejestracjaActivity extends AppCompatActivity {
                     country.getText().toString());
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        this.recreate();
     }
 }

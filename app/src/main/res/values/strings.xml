@@ -1,11 +1,20 @@
 <resources>
     <string name="app_name">APIshop</string>
     <string name="product_name_hint">Product name</string>
-    <string name="seller_name_hint">Your name</string>
+    <string name="seller_name_hint">Name</string>
     <string name="description_product_hint">Product description</string>
     <string name="price_hint">Price</string>
     <string name="sell_button">Sell</string>
     <string name="menu_button">Menu</string>
     <string name="product_for_sell_button">Products for sell</string>
-
+    <string name="login_button">Log in</string>
+    <string name="registration">Registration</string>
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Password</string>
+    <string name="seller_surname_hint">Surname</string>
+    <string name="seller_street_hint">Street</string>
+    <string name="seller_premise_hint">Premise</string>
+    <string name="seller_post_code_hint">Post code</string>
+    <string name="seller_city_hint">City</string>
+    <string name="seller_country_hint">Country</string>
 </resources>

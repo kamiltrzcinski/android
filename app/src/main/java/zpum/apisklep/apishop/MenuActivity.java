@@ -23,6 +23,7 @@ public class MenuActivity extends AppCompatActivity {
     public void Sprzedaj(View view) {
         Intent sprzedaj = new Intent(this, SprzedajActivity.class);
         startActivity(sprzedaj);
+        this.recreate();
     }
 
     public void Wyswietl(View view){
@@ -31,5 +32,6 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent wyswietl = new Intent(this, WyswietlActivity.class);
         startActivity(wyswietl);
+        this.recreate();
     }
 }

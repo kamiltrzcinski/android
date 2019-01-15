@@ -188,7 +188,7 @@ public class Service {
 
         Log.d("", "Json:" + new JSONObject(jsonParams));
 
-        JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.POST, MYURL + "/offer", new JSONObject(jsonParams),
+        JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.GET, MYURL + "/offer", new JSONObject(jsonParams),
 
                 new Response.Listener<JSONObject>() {
 

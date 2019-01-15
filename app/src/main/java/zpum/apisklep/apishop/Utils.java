@@ -17,6 +17,10 @@ public class Utils {
         return new Gson().fromJson(apiToken, ApiToken.class);
     }
 
+    public static Product parseFromJsonProduct(String product){
+        return new Gson().fromJson(product,Product.class);
+    }
+
     public static String getMyToken(){
         return ActiveToken.getInstance().getApiToken().getAccessToken();
     }

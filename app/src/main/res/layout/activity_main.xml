@@ -24,29 +24,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Login"
-            android:inputType="textPersonName" />
+            android:hint="@string/login_hint"
+            android:inputType="textPersonName"
+            tools:ignore="Autofill"/>
 
         <EditText
             android:id="@+id/editPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Twoje hasło"
-            android:inputType="textPassword" />
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            tools:ignore="Autofill"/>
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Menu"
-            android:text="Zaloguj" />
+            android:text="@string/login_button" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Rejestracja"
-            android:text="Rejestracja" />
+            android:text="@string/registration" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -3,10 +3,20 @@
 <resources>
     <string name="app_name">APIshop</string>
     <string name="product_name_hint">Nazwa produktu</string>
-    <string name="seller_name_hint">Twoje imię</string>
+    <string name="seller_name_hint">Imię</string>
     <string name="description_product_hint">Opis produktu</string>
     <string name="price_hint">Cena</string>
     <string name="sell_button">Sprzedaj</string>
     <string name="menu_button">Menu</string>
     <string name="product_for_sell_button">Przedmioty wystawione</string>
+    <string name="login_button">Zaloguj</string>
+    <string name="registration">Rejestruj</string>
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Hasło</string>
+    <string name="seller_surname_hint">Nazwisko</string>
+    <string name="seller_street_hint">Ulica</string>
+    <string name="seller_premise_hint">Numer domu</string>
+    <string name="seller_post_code_hint">Kod pocztowy</string>
+    <string name="seller_city_hint">Miasto</string>
+    <string name="seller_country_hint">Państwo</string>
 </resources>

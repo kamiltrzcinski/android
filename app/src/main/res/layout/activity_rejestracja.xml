@@ -24,79 +24,87 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="login"
+            android:hint="@string/login_hint"
             android:inputType="textPersonName"
-            android:autofillHints="" />
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editPass1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword" />
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editImie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="name"
-            android:inputType="textPersonName" />
+            android:hint="@string/seller_name_hint"
+            android:inputType="textPersonName"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editNazwisko"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="surname"
-            android:inputType="textPersonName" />
+            android:hint="@string/seller_surname_hint"
+            android:inputType="textPersonName"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editUlica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="street"
-            android:inputType="textPersonName" />
+            android:hint="@string/seller_street_hint"
+            android:inputType="textPersonName"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editNrDom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="numer domu"
-            android:inputType="textPersonName" />
+            android:hint="@string/seller_premise_hint"
+            android:inputType="textPersonName"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editKod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="kod pocztowy"
-            android:inputType="textPersonName" />
+            android:hint="@string/seller_post_code_hint"
+            android:inputType="textPersonName"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editMiasto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="city"
-            android:inputType="textPersonName" />
+            android:hint="@string/seller_city_hint"
+            android:inputType="textPersonName"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editPanstwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="państwo"
-            android:inputType="textPersonName" />
+            android:hint="@string/seller_country_hint"
+            android:inputType="textPersonName"
+            tools:ignore="Autofill" />
 
         <Button
             android:id="@+id/buttonZarejestruj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="SendData"
-            android:text="ZAREJESTRUJ" />
+            android:text="@string/registration" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
