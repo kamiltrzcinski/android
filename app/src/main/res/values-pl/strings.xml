@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">APIshop</string>
+    <string name="product_name_hint">Nazwa produktu</string>
+    <string name="seller_name_hint">Twoje imię</string>
+    <string name="description_product_hint">Opis produktu</string>
+    <string name="price_hint">Cena</string>
+    <string name="sell_button">Sprzedaj</string>
+    <string name="menu_button">Menu</string>
+    <string name="product_for_sell_button">Przedmioty wystawione</string>
+</resources>

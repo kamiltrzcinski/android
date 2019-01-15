@@ -1,5 +1,7 @@
 package zpum.apisklep.apishop;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -22,6 +24,7 @@ public class SprzedajActivity extends AppCompatActivity {
     EditText priceET;
     @BindView(R.id.sellButton)
     Button sellButton;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +37,11 @@ public class SprzedajActivity extends AppCompatActivity {
 
     @OnClick(R.id.sellButton)
     public void onViewClicked() {
+        Service service = new Service(getApplicationContext());
+        service.postOffer(productNameTE.getText().toString(), sellerNameTE.getText().toString(), descriptionProductET.getText().toString(),Double.parseDouble(priceET.getText().toString()));
+
+        context = getApplicationContext();
+        Intent menu = new Intent(this, MenuActivity.class);
+        startActivity(menu);
     }
 }

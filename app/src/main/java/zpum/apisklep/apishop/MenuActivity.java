@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity {
 
-    TextView textView;
     String value = ActiveToken.getInstance().getApiToken().getAccessToken();
 
 
@@ -17,9 +16,6 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        textView = (TextView)findViewById(R.id.textView);
-
-        textView.setText(value);
     }
 
 
@@ -30,6 +26,9 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void Wyswietl(View view){
+        Service service = new Service(getApplicationContext());
+        service.GetOffer();
+
         Intent wyswietl = new Intent(this, WyswietlActivity.class);
         startActivity(wyswietl);
     }

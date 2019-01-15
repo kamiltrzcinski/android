@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     Context context;
     public static final String MYURL = "https://shopwsb.azurewebsites.net";
-    public String accessToken;
 
 
     @Override
@@ -44,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         context = getApplicationContext();
         Intent menu = new Intent(this, MenuActivity.class);
         startActivity(menu);
+        this.recreate();
     }
 
 }

@@ -27,26 +27,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Sprzedaj"
-            android:text="SPRZEDAJ" />
+            android:text="@string/sell_button" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Wyswietl"
-            android:text="PRZEDMIOTY WYSTAWIONE" />
+            android:text="@string/product_for_sell_button" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="248dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="93dp"
-        android:layout_marginEnd="142dp"
-        android:layout_marginBottom="273dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

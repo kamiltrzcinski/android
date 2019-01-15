@@ -5,5 +5,7 @@
     <string name="description_product_hint">Product description</string>
     <string name="price_hint">Price</string>
     <string name="sell_button">Sell</string>
+    <string name="menu_button">Menu</string>
+    <string name="product_for_sell_button">Products for sell</string>
 
 </resources>
