@@ -1,5 +1,6 @@
 package zpum.apisklep.apishop;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
@@ -9,9 +10,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -181,34 +185,38 @@ public class Service {
         queue.start();
     }
 
-    public void GetOffer() {
-
+    public void GetAllOffer() {
         RequestQueue queue = Volley.newRequestQueue(context);
-        Map<String, String> jsonParams = new HashMap<String, String>();
 
-        Log.d("", "Json:" + new JSONObject(jsonParams));
+        JsonArrayRequest getAllRequest = new JsonArrayRequest(Request.Method.GET, MYURL + "/offer", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject product = response.getJSONObject(i);
 
-        JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.GET, MYURL + "/offer", new JSONObject(jsonParams),
+                        String name = product.getString("name");
+                        String sellerName = product.getString("sellerName");
+                        String description = product.getString("description");
+                        Double price = product.getDouble("price");
 
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, name+" "+sellerName+" "+price.toString()+"\n",Toast.LENGTH_LONG).show();
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
-                        Log.d("", "Error: " + error
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d("", "Error: " + error
 //                        + "\nStatus Code " + error.networkResponse.statusCode
 //                        + "\nResponse Data " + error.networkResponse.data
-                                + "\nCause " + error.getCause()
-                                + "\nmessage" + error.getMessage());
-                    }
-                }
-
+                        + "\nCause " + error.getCause()
+                        + "\nmessage" + error.getMessage());
+            }
+        }
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -223,7 +231,7 @@ public class Service {
             }
         };
 
-        queue.add(putRequest);
+        queue.add(getAllRequest);
         queue.start();
     }
 }

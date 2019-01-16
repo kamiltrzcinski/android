@@ -2,6 +2,8 @@ package zpum.apisklep.apishop;
 
 import com.google.gson.Gson;
 
+import org.json.JSONObject;
+
 public class Utils {
     public static String parseToJson(Product product){
         return new Gson().toJson(product);
@@ -18,7 +20,7 @@ public class Utils {
     }
 
     public static Product parseFromJsonProduct(String product){
-        return new Gson().fromJson(product,Product.class);
+        return new Gson().fromJson(product, Product.class);
     }
 
     public static String getMyToken(){

@@ -28,7 +28,7 @@ public class MenuActivity extends AppCompatActivity {
 
     public void Wyswietl(View view){
         Service service = new Service(getApplicationContext());
-        service.GetOffer();
+        service.GetAllOffer();
 
         Intent wyswietl = new Intent(this, WyswietlActivity.class);
         startActivity(wyswietl);
