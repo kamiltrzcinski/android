@@ -13,6 +13,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +23,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.lang.String;
+
 
 import static zpum.apisklep.apishop.MainActivity.MYURL;
 
@@ -185,29 +188,30 @@ public class Service {
         queue.start();
     }
 
-    public void GetAllOffer() {
+    public void GetAllOffer(VolleCallbak) {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         JsonArrayRequest getAllRequest = new JsonArrayRequest(Request.Method.GET, MYURL + "/offer", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                try {
-                    for (int i = 0; i < response.length(); i++) {
-                        JSONObject product = response.getJSONObject(i);
-
-                        int id = product.getInt("id");
-                        String name = product.getString("name");
-                        String sellerName = product.getString("sellerName");
-                        String description = product.getString("description");
-                        Double price = product.getDouble("price");
-
-                        Product finalProduct = new Product(id, name, sellerName, description, price);
-
-                        Toast.makeText(context, id+" "+name+" "+sellerName+" "+description+" "+price.toString()+"\n",Toast.LENGTH_LONG).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                Product[] tablica = new Gson().fromJson(response.toString(), Product[].class);
+//                try {
+//                    for (int i = 0; i < response.length(); i++) {
+//                        JSONObject product = response.getJSONObject(i);
+//
+//                        int id = product.getInt("id");
+//                        String name = product.getString("name");
+//                        String sellerName = product.getString("sellerName");
+//                        String description = product.getString("description");
+//                        Double price = product.getDouble("price");
+//
+//                        Product finalProduct = new Product(id, name, sellerName, description, price);
+//
+//                        Toast.makeText(context, id+" "+name+" "+sellerName+" "+description+" "+price.toString()+"\n",Toast.LENGTH_LONG).show();
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
             }
         }, new Response.ErrorListener() {
             @Override
