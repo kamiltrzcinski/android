@@ -188,13 +188,13 @@ public class Service {
         queue.start();
     }
 
-    public void GetAllOffer(VolleCallbak) {
+    public void GetAllOffer(final VolleyCallback callback) {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         JsonArrayRequest getAllRequest = new JsonArrayRequest(Request.Method.GET, MYURL + "/offer", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Product[] tablica = new Gson().fromJson(response.toString(), Product[].class);
+                callback.onSuccess(response.toString());
 //                try {
 //                    for (int i = 0; i < response.length(); i++) {
 //                        JSONObject product = response.getJSONObject(i);

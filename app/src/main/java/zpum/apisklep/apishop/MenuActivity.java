@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
 public class MenuActivity extends AppCompatActivity {
 
     String value = ActiveToken.getInstance().getApiToken().getAccessToken();
@@ -27,11 +31,21 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void Wyswietl(View view){
+        final Context context = getApplicationContext();
         Service service = new Service(getApplicationContext());
-        service.GetAllOffer();
-
-        Intent wyswietl = new Intent(this, WyswietlActivity.class);
-        startActivity(wyswietl);
+        service.GetAllOffer(new VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                Product[] tablica = new Gson().fromJson(result, Product[].class);
+//                Product[] tablica = new Product[result.length()-1];
+                Intent intent = new Intent(context, WyswietlActivity.class);
+                intent.putExtra("tablica", tablica);
+                startActivity(intent);
+            }
+        });
+//        Intent intent = new Intent(this, WyswietlActivity.class);
+//        intent.putExtra("tablica", );
+//        startActivity(intent);
         this.recreate();
     }
 }
