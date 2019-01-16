@@ -39,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
                 Product[] tablica = new Gson().fromJson(result, Product[].class);
 //                Product[] tablica = new Product[result.length()-1];
                 Intent intent = new Intent(context, WyswietlActivity.class);
-                intent.putExtra("tablica", tablica);
+                intent.putExtra("tablica", result);
                 startActivity(intent);
             }
         });

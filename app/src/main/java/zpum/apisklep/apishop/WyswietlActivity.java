@@ -1,5 +1,6 @@
 package zpum.apisklep.apishop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,8 +20,9 @@ public class WyswietlActivity extends AppCompatActivity {
     Button menuButton;
     @BindView(R.id.productT)
     TextView productT;
-    String result = getIntent().getStringExtra("tablica");
-    Product[] products = new Gson().fromJson(result, Product[].class);
+
+//    String result = getIntent().getStringExtra("tablica");
+//    Product[] products = new Gson().fromJson(result, Product[].class);
 
 
     @Override
@@ -28,8 +30,10 @@ public class WyswietlActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wyswietl);
         ButterKnife.bind(this);
-        for (int i=0; i<result.length(); i++){
-            productT.setText(products[i]+"\n");
+        String result = getIntent().getStringExtra("tablica");
+        Product[] products = new Gson().fromJson(result, Product[].class);
+        for (int i=0; i<products.length; i++){
+            productT.setText(products[i]+"");
         }
     }
 
