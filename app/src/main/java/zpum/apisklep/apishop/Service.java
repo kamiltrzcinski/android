@@ -195,12 +195,15 @@ public class Service {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject product = response.getJSONObject(i);
 
+                        int id = product.getInt("id");
                         String name = product.getString("name");
                         String sellerName = product.getString("sellerName");
                         String description = product.getString("description");
                         Double price = product.getDouble("price");
 
-                        Toast.makeText(context, name+" "+sellerName+" "+price.toString()+"\n",Toast.LENGTH_LONG).show();
+                        Product finalProduct = new Product(id, name, sellerName, description, price);
+
+                        Toast.makeText(context, id+" "+name+" "+sellerName+" "+description+" "+price.toString()+"\n",Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
