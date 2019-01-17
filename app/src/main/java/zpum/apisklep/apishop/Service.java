@@ -318,7 +318,7 @@ public class Service {
         RequestQueue queue = Volley.newRequestQueue(context);
         String id = String.valueOf(position);
 
-        JsonObjectRequest deleteRequest = new JsonObjectRequest(Request.Method.DELETE, MYURL + "/delete/offer/" + id, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest deleteRequest = new JsonObjectRequest(Request.Method.DELETE, MYURL + "/offer/delete/" + id, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(context, "Przedmiot usunięto!", Toast.LENGTH_LONG).show();

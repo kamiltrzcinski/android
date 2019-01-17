@@ -65,7 +65,6 @@ public class SelectedProductActivity extends AppCompatActivity {
             case R.id.menuButton:
                 break;
             case R.id.deleteButton:
-                id-=1;
                 service.deleteOffer(id);
                 break;
             case R.id.updateButton:
