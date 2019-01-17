@@ -15,6 +15,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+
 import android.content.SharedPreferences;
 
 import org.json.JSONArray;
@@ -150,7 +151,7 @@ public class Service {
 
         Log.d("", "Json:" + new JSONObject(jsonParams));
 
-        JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.POST, MYURL + "/offer", new JSONObject(jsonParams),
+        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, MYURL + "/offer", new JSONObject(jsonParams),
 
                 new Response.Listener<JSONObject>() {
 
@@ -185,7 +186,7 @@ public class Service {
             }
         };
 
-        queue.add(putRequest);
+        queue.add(postRequest);
         queue.start();
     }
 
@@ -225,10 +226,11 @@ public class Service {
         queue.start();
     }
 
-    public void GetOffer(String position,final VolleyCallback callback) {
+    public void GetOffer(int position, final VolleyCallback callback) {
         RequestQueue queue = Volley.newRequestQueue(context);
-
-        JsonObjectRequest getOfferRequest = new JsonObjectRequest(Request.Method.GET, MYURL + "/offer/"+position, null, new Response.Listener<JSONObject>() {
+        position += 1;
+        String id = String.valueOf(position);
+        JsonObjectRequest getOfferRequest = new JsonObjectRequest(Request.Method.GET, MYURL + "/offer/" + id, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 callback.onSuccess(response.toString());
@@ -243,8 +245,7 @@ public class Service {
                         + "\nCause " + error.getCause()
                         + "\nmessage" + error.getMessage());
             }
-        })
-        {
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
@@ -258,6 +259,91 @@ public class Service {
             }
         };
         queue.add(getOfferRequest);
+        queue.start();
+    }
+
+    public void putOffer(int position, final String name, final String sellerName, final String description, final Double price) {
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String id = String.valueOf(position);
+        Map<String, String> jsonParams = new HashMap<String, String>();
+        jsonParams.put("name", name);
+        jsonParams.put("sellerName", sellerName);
+        jsonParams.put("description", description);
+        jsonParams.put("price", price.toString());
+
+
+        Log.d("", "Json:" + new JSONObject(jsonParams));
+
+        JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.POST, MYURL + "/offer/" + id, new JSONObject(jsonParams),
+
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(context, "Zmieniono przedmiot!", Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.d("", "Error: " + error
+//                        + "\nStatus Code " + error.networkResponse.statusCode
+//                        + "\nResponse Data " + error.networkResponse.data
+                                + "\nCause " + error.getCause()
+                                + "\nmessage" + error.getMessage());
+                    }
+                }
+
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Authorization", Utils.getMyToken());
+                return params;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+        };
+
+        queue.add(putRequest);
+        queue.start();
+    }
+
+    public void deleteOffer(int position) {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String id = String.valueOf(position);
+
+        JsonObjectRequest deleteRequest = new JsonObjectRequest(Request.Method.DELETE, MYURL + "/offer/" + id, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(context, "Przedmiot usunięto!", Toast.LENGTH_LONG).show();
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Authorization", Utils.getMyToken());
+                return params;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+        };
+
+        queue.add(deleteRequest);
         queue.start();
     }
 }

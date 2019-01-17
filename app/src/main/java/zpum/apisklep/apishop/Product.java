@@ -11,6 +11,10 @@ public class Product {
     private String description;
     private Double price;
 
+    public int getId(){
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -27,6 +31,7 @@ public class Product {
         return price;
     }
 
+    public Product(){}
     public Product(int id, String name, String sellerName, String description, Double price ) {
         this.id = id;
         this.name = name;

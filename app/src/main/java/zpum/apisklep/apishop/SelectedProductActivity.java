@@ -1,5 +1,6 @@
 package zpum.apisklep.apishop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +38,7 @@ public class SelectedProductActivity extends AppCompatActivity {
     EditText descriptionET;
     @BindView(R.id.priceET)
     EditText priceET;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +48,31 @@ public class SelectedProductActivity extends AppCompatActivity {
         String result = getIntent().getStringExtra("produkt");
         Product product = new Gson().fromJson(result, Product.class);
         productName.setText(product.getName());
+        sellerName.setText(product.getSellerName());
+        description.setText(product.getDescription());
+        price.setText(product.getPrice().toString());
+        id=product.getId();
     }
 
     @OnClick({R.id.menuButton, R.id.deleteButton, R.id.updateButton})
     public void onViewClicked(View view) {
+//        setContentView(R.layout.activity_selected_product);
+        Service service = new Service(getApplicationContext());
+        String position = getIntent().getStringExtra("position");
+        Product productId = new Product();
+
         switch (view.getId()) {
             case R.id.menuButton:
                 break;
             case R.id.deleteButton:
+                service.deleteOffer(id);
                 break;
             case R.id.updateButton:
+                service.putOffer(id, productNameTE.getText().toString(), sellerName.getText().toString(), descriptionET.getText().toString(), Double.parseDouble(priceET.getText().toString()));
                 break;
         }
+        Intent menu = new Intent(this, MenuActivity.class);
+        startActivity(menu);
+        this.recreate();
     }
 }

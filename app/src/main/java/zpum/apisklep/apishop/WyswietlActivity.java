@@ -45,11 +45,11 @@ public class WyswietlActivity extends AppCompatActivity {
     }
 
     @OnItemClick(R.id.productList)
-    public void onItemClick(AdapterView<?> parent, int position){
+    public void onItemClick(AdapterView<?> parent, final int position){
 
         final Context context = getApplicationContext();
         Service service = new Service(getApplicationContext());
-        service.GetOffer(String.valueOf(position), new VolleyCallback() {
+        service.GetOffer(position, new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 Intent intent = new Intent(context, SelectedProductActivity.class);
