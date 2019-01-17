@@ -42,12 +42,9 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", sellerName='" + sellerName + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
+        return
+                "Nazwa Przedmiotu = " + name + "\n" +
+                "Imię sprzedającego = " + sellerName + "\n" +
+                "Cena = " + price;
     }
 }

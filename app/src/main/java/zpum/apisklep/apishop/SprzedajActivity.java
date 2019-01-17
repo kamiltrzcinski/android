@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,8 +39,11 @@ public class SprzedajActivity extends AppCompatActivity {
     @OnClick(R.id.sellButton)
     public void onViewClicked() {
         Service service = new Service(getApplicationContext());
-        service.postOffer(productNameTE.getText().toString(), sellerNameTE.getText().toString(), descriptionProductET.getText().toString(),Double.parseDouble(priceET.getText().toString()));
-
+        if (priceET.getText().toString().equals("") || productNameTE.getText().toString().equals("") || descriptionProductET.getText().equals("")) {
+            Toast.makeText(this, "Musisz wprowadzić wszystkie dane!", Toast.LENGTH_LONG).show();
+        } else {
+            service.postOffer(productNameTE.getText().toString(), sellerNameTE.getText().toString(), descriptionProductET.getText().toString(), Double.parseDouble(priceET.getText().toString()));
+        }
         context = getApplicationContext();
         Intent menu = new Intent(this, MenuActivity.class);
         startActivity(menu);

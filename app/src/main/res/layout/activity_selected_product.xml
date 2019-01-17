@@ -10,33 +10,49 @@
     <TextView
         android:id="@+id/productName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="10dp"
+        android:gravity="bottom|start"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/sellerName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="10dp"
+        android:gravity="bottom|start"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/productName" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="10dp"
+        android:gravity="bottom|start"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/sellerName" />
 
     <TextView
         android:id="@+id/price"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="10dp"
+        android:gravity="bottom|start"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <Button
@@ -75,10 +91,11 @@
         android:ems="10"
         android:hint="@string/product_name_hint"
         android:inputType="textPersonName"
-        tools:ignore="Autofill"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/sellerNameET"
@@ -87,10 +104,12 @@
         android:ems="10"
         android:hint="@string/seller_name_hint"
         android:inputType="textPersonName"
-        tools:ignore="Autofill"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionET"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productNameTE" />
+        app:layout_constraintTop_toBottomOf="@+id/productNameTE"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/descriptionET"
@@ -99,10 +118,12 @@
         android:ems="10"
         android:hint="@string/description_product_hint"
         android:inputType="textPersonName"
-        tools:ignore="Autofill"
+        app:layout_constraintBottom_toTopOf="@+id/priceET"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sellerNameET" />
+        app:layout_constraintTop_toBottomOf="@+id/sellerNameET"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/priceET"
@@ -111,9 +132,68 @@
         android:ems="10"
         android:hint="@string/price_hint"
         android:inputType="textPersonName"
-        tools:ignore="Autofill"
+        app:layout_constraintBottom_toTopOf="@+id/updateButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionET" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionET"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/product_name_hint"
+        android:textAlignment="textEnd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/seller_name_hint"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/description_product_hint"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/price_hint"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="@string/update_text"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/productNameTE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

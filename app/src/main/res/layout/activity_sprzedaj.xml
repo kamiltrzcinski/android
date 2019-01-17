@@ -63,11 +63,11 @@
         android:ems="10"
         android:hint="@string/price_hint"
         android:inputType="numberDecimal"
-        tools:ignore="Autofill"
         app:layout_constraintBottom_toTopOf="@+id/sellButton"
         app:layout_constraintEnd_toEndOf="@+id/descriptionProductET"
         app:layout_constraintStart_toStartOf="@+id/descriptionProductET"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionProductET" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionProductET"
+        tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/sellButton"

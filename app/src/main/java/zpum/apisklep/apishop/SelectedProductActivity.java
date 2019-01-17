@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -68,7 +69,11 @@ public class SelectedProductActivity extends AppCompatActivity {
                 service.deleteOffer(id);
                 break;
             case R.id.updateButton:
-                service.putOffer(id, productNameTE.getText().toString(), sellerName.getText().toString(), descriptionET.getText().toString(), Double.parseDouble(priceET.getText().toString()));
+                if(productName.getText().toString().equals("") || descriptionET.getText().toString().equals("") || priceET.getText().toString().equals("")){
+                    Toast.makeText(this, "Musisz wprowadzić wszystkie dane!", Toast.LENGTH_LONG).show();
+                }else {
+                    service.putOffer(id, productNameTE.getText().toString(), sellerName.getText().toString(), descriptionET.getText().toString(), Double.parseDouble(priceET.getText().toString()));
+                }
                 break;
         }
         Intent menu = new Intent(this, MenuActivity.class);

@@ -4,7 +4,7 @@
     <string name="app_name">APIshop</string>
     <string name="product_name_hint">Nazwa produktu</string>
     <string name="seller_name_hint">Imię</string>
-    <string name="description_product_hint">Opis produktu</string>
+    <string name="description_product_hint">Opis</string>
     <string name="price_hint">Cena</string>
     <string name="sell_button">Sprzedaj</string>
     <string name="menu_button">Menu</string>
@@ -21,4 +21,6 @@
     <string name="seller_country_hint">Państwo</string>
     <string name="change_item_button">Uaktualnij przedmiot</string>
     <string name="delete_item_button">Usuń przedmiot</string>
+    <string name="update_text">jeśli chcesz uaktualnić dane, wprowadź je poniżej i wciśnij \"UAKTUALNIJ PRZEDMIOT\"</string>
+    <string name="item_name_string">Nazwa produktu</string>
 </resources>

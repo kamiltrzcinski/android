@@ -2,7 +2,7 @@
     <string name="app_name">APIshop</string>
     <string name="product_name_hint">Product name</string>
     <string name="seller_name_hint">Name</string>
-    <string name="description_product_hint">Product description</string>
+    <string name="description_product_hint">Description</string>
     <string name="price_hint">Price</string>
     <string name="sell_button">Sell</string>
     <string name="menu_button">Menu</string>
@@ -19,4 +19,6 @@
     <string name="seller_country_hint">Country</string>
     <string name="change_item_button">Update item</string>
     <string name="delete_item_button">Delete item</string>
+    <string name="update_text">If you want to update data, enter them below and press \"UPDATE ITEM\"</string>
+    <string name="item_name_string">Product name</string>
 </resources>
