@@ -1,29 +1,27 @@
 package zpum.apisklep.apishop;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
+import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 
 public class WyswietlActivity extends AppCompatActivity {
-
-
     @BindView(R.id.menuButton)
     Button menuButton;
-    @BindView(R.id.productT)
-    TextView productT;
-
-//    String result = getIntent().getStringExtra("tablica");
-//    Product[] products = new Gson().fromJson(result, Product[].class);
-
+    @BindView(R.id.productList)
+    ListView productList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +30,34 @@ public class WyswietlActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         String result = getIntent().getStringExtra("tablica");
         Product[] products = new Gson().fromJson(result, Product[].class);
-        for (int i=0; i<products.length; i++){
-            productT.setText(products[i]+"");
-        }
+
+        ArrayAdapter<Product> productsAdapter = new ArrayAdapter<Product>
+                (this, R.layout.product, R.id.textView, products);
+
+        productList.setAdapter(productsAdapter);
     }
 
+    @OnClick(R.id.menuButton)
+    public void onViewClicked() {
+        Intent menu = new Intent(this, MenuActivity.class);
+        startActivity(menu);
+        this.recreate();
+    }
 
-    @OnClick({R.id.menuButton, R.id.productT})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.menuButton:
-                break;
-            case R.id.productT:
-                break;
-        }
+    @OnItemClick(R.id.productList)
+    public void onItemClick(AdapterView<?> parent, int position){
+
+        final Context context = getApplicationContext();
+        Service service = new Service(getApplicationContext());
+        service.GetOffer(String.valueOf(position), new VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                Intent intent = new Intent(context, SelectedProductActivity.class);
+                intent.putExtra("produkt", result);
+                startActivity(intent);
+            }
+        });
+        this.recreate();
     }
 }
+

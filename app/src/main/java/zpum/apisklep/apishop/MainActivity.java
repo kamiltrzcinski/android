@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText login;
     EditText password;
-    Context context;
     public static final String MYURL = "https://shopwsb.azurewebsites.net";
 
 
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Rejestracja(View view) {
-        context = getApplicationContext();
         Intent rejestracja = new Intent(this, RejestracjaActivity.class);
         startActivity(rejestracja);
     }
@@ -40,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         Service service = new Service(getApplicationContext());
         service.postLogin(login.getText().toString(), password.getText().toString());
 
-        context = getApplicationContext();
         Intent menu = new Intent(this, MenuActivity.class);
         startActivity(menu);
         this.recreate();

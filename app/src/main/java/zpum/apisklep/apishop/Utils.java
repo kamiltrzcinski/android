@@ -26,5 +26,6 @@ public class Utils {
     public static String getMyToken(){
         return ActiveToken.getInstance().getApiToken().getAccessToken();
     }
+
 }
 

@@ -15,6 +15,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import android.content.SharedPreferences;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +53,7 @@ public class Service {
                     public void onResponse(JSONObject response) {
                         ApiToken apiToken = Utils.parseFromJson(response.toString());
                         ActiveToken.getInstance().setApiToken(apiToken);
-                        Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Zalogowano poprawnie!", Toast.LENGTH_LONG).show();
                         Log.d("", response.toString());
 
                     }
@@ -107,7 +108,7 @@ public class Service {
                 new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Zarejestrowano poprawnie!", Toast.LENGTH_LONG).show();
             }
         },
                 new Response.ErrorListener() {
@@ -155,7 +156,7 @@ public class Service {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Przedmiot wystawiono do sprzedaży!", Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -195,23 +196,6 @@ public class Service {
             @Override
             public void onResponse(JSONArray response) {
                 callback.onSuccess(response.toString());
-//                try {
-//                    for (int i = 0; i < response.length(); i++) {
-//                        JSONObject product = response.getJSONObject(i);
-//
-//                        int id = product.getInt("id");
-//                        String name = product.getString("name");
-//                        String sellerName = product.getString("sellerName");
-//                        String description = product.getString("description");
-//                        Double price = product.getDouble("price");
-//
-//                        Product finalProduct = new Product(id, name, sellerName, description, price);
-//
-//                        Toast.makeText(context, id+" "+name+" "+sellerName+" "+description+" "+price.toString()+"\n",Toast.LENGTH_LONG).show();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -237,8 +221,43 @@ public class Service {
                 return "application/json; charset=utf-8";
             }
         };
-
         queue.add(getAllRequest);
+        queue.start();
+    }
+
+    public void GetOffer(String position,final VolleyCallback callback) {
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+        JsonObjectRequest getOfferRequest = new JsonObjectRequest(Request.Method.GET, MYURL + "/offer/"+position, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                callback.onSuccess(response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d("", "Error: " + error
+//                        + "\nStatus Code " + error.networkResponse.statusCode
+//                        + "\nResponse Data " + error.networkResponse.data
+                        + "\nCause " + error.getCause()
+                        + "\nmessage" + error.getMessage());
+            }
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Authorization", Utils.getMyToken());
+                return params;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+        };
+        queue.add(getOfferRequest);
         queue.start();
     }
 }

@@ -19,4 +19,6 @@
     <string name="seller_post_code_hint">Kod pocztowy</string>
     <string name="seller_city_hint">Miasto</string>
     <string name="seller_country_hint">Państwo</string>
+    <string name="change_item_button">Uaktualnij przedmiot</string>
+    <string name="delete_item_button">Usuń przedmiot</string>
 </resources>

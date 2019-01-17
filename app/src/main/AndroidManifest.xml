@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="zpum.apisklep.apishop">
 
-
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,8 +21,8 @@
         <activity android:name=".RejestracjaActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".SprzedajActivity" />
-        <activity android:name=".WyswietlActivity"></activity>
+        <activity android:name=".WyswietlActivity" />
+        <activity android:name=".SelectedProductActivity"></activity>
     </application>
-
 
 </manifest>
