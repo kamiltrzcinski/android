@@ -36,22 +36,7 @@ public class RejestracjaActivity extends AppCompatActivity {
         country = findViewById(R.id.editPanstwo);
     }
 
-//    public User GetData() {
-//        User user = new User(login.getText().toString(), password.getText().toString(),
-//                name.getText().toString(), surname.getText().toString(),
-//                premise.getText().toString(),street.getText().toString(),
-//                postCode.getText().toString(), city.getText().toString(),
-//                country.getText().toString());
-//
-//        return user;
-//    }
-
-
     public void SendData(View view) {
-//        final String url = MYURL +"/user";
-//        User user = GetData();
-
-//        String userJson = Utils.parseToJson(user);
         Service service = new Service(getApplicationContext());
             service.postRejestracja(login.getText().toString(), password.getText().toString(),
                     name.getText().toString(), surname.getText().toString(), premise.getText().toString(),

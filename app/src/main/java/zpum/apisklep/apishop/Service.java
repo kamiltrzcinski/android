@@ -56,7 +56,6 @@ public class Service {
                         ActiveToken.getInstance().setApiToken(apiToken);
                         Toast.makeText(context, "Zalogowano poprawnie!", Toast.LENGTH_LONG).show();
                         Log.d("", response.toString());
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -70,7 +69,6 @@ public class Service {
                                 + "\nmessage" + error.getMessage());
                     }
                 }
-
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -109,7 +107,7 @@ public class Service {
                 new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(context, "Zarejestrowano poprawnie!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
             }
         },
                 new Response.ErrorListener() {

@@ -35,11 +35,10 @@ public class SprzedajActivity extends AppCompatActivity {
 
     }
 
-
     @OnClick(R.id.sellButton)
     public void onViewClicked() {
         Service service = new Service(getApplicationContext());
-        if (priceET.getText().toString().equals("") || productNameTE.getText().toString().equals("") || descriptionProductET.getText().equals("")) {
+        if (priceET.getText().toString().equals("") || sellerNameTE.getText().toString().equals("") || productNameTE.getText().toString().equals("") || descriptionProductET.getText().equals("")) {
             Toast.makeText(this, "Musisz wprowadzić wszystkie dane!", Toast.LENGTH_LONG).show();
         } else {
             service.postOffer(productNameTE.getText().toString(), sellerNameTE.getText().toString(), descriptionProductET.getText().toString(), Double.parseDouble(priceET.getText().toString()));

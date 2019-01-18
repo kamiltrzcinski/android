@@ -57,10 +57,8 @@ public class SelectedProductActivity extends AppCompatActivity {
 
     @OnClick({R.id.menuButton, R.id.deleteButton, R.id.updateButton})
     public void onViewClicked(View view) {
-//        setContentView(R.layout.activity_selected_product);
+
         Service service = new Service(getApplicationContext());
-        String position = getIntent().getStringExtra("position");
-        Product productId = new Product();
 
         switch (view.getId()) {
             case R.id.menuButton:
@@ -69,7 +67,7 @@ public class SelectedProductActivity extends AppCompatActivity {
                 service.deleteOffer(id);
                 break;
             case R.id.updateButton:
-                if(productName.getText().toString().equals("") || descriptionET.getText().toString().equals("") || priceET.getText().toString().equals("")){
+                if(productName.getText().toString().equals("") || sellerNameET.getText().toString().equals("") || descriptionET.getText().toString().equals("") || priceET.getText().toString().equals("")){
                     Toast.makeText(this, "Musisz wprowadzić wszystkie dane!", Toast.LENGTH_LONG).show();
                 }else {
                     service.putOffer(id, productNameTE.getText().toString(), sellerName.getText().toString(), descriptionET.getText().toString(), Double.parseDouble(priceET.getText().toString()));
