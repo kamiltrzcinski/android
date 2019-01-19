@@ -36,16 +36,11 @@ public class MenuActivity extends AppCompatActivity {
         service.GetAllOffer(new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
-//                Product[] tablica = new Gson().fromJson(result, Product[].class);
-//                Product[] tablica = new Product[result.length()-1];
                 Intent intent = new Intent(context, WyswietlActivity.class);
                 intent.putExtra("tablica", result);
                 startActivity(intent);
             }
         });
-//        Intent intent = new Intent(this, WyswietlActivity.class);
-//        intent.putExtra("tablica", );
-//        startActivity(intent);
         this.recreate();
     }
 }

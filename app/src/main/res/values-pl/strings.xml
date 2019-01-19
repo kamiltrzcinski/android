@@ -21,6 +21,6 @@
     <string name="seller_country_hint">Państwo</string>
     <string name="change_item_button">Uaktualnij przedmiot</string>
     <string name="delete_item_button">Usuń przedmiot</string>
-    <string name="update_text">jeśli chcesz uaktualnić dane, wprowadź je poniżej i wciśnij \"UAKTUALNIJ PRZEDMIOT\"</string>
+    <string name="update_text">Jeśli chcesz uaktualnić dane, wprowadź je poniżej i wciśnij \"UAKTUALNIJ PRZEDMIOT\"</string>
     <string name="item_name_string">Nazwa produktu</string>
 </resources>

@@ -50,7 +50,7 @@ public class User {
 
     public User(String login, String password, String name, String surname, String premise,
                 String street, String postCode, String city,
-                String panstwo){
+                String country){
         this.login=login;
         this.password = password;
         this.name = name;
@@ -59,6 +59,6 @@ public class User {
         this.street = street;
         this.postCode = postCode;
         this.city = city;
-        this.country =panstwo;
+        this.country =country;
     }
 }

@@ -42,6 +42,7 @@ public class Service {
         Map<String, String> jsonParams = new HashMap<String, String>();
         jsonParams.put("login", login);
         jsonParams.put("password", password);
+        String token = "";
 
 
         Log.d("", "Json:" + new JSONObject(jsonParams));
@@ -107,18 +108,22 @@ public class Service {
                 new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Zarejestrowano poprawnie!", Toast.LENGTH_LONG).show();
             }
         },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
-                        Log.d("", "Error: " + error
+                        if (!error.toString().contains("End of input at character 0")) {
+                            Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Log.d("", "Error: " + error
 //                        + "\nStatus Code " + error.networkResponse.statusCode
 //                        + "\nResponse Data " + error.networkResponse.data
-                                + "\nCause " + error.getCause()
-                                + "\nmessage" + error.getMessage());
+                                    + "\nCause " + error.getCause()
+                                    + "\nmessage" + error.getMessage());
+                        }
                     }
                 }
         ) {
